@@ -22,7 +22,7 @@ const restructureColumns = function(containerEl, containerSelector, itemSelector
 
     // Only care about classes like "order-1", "order-2", etc.
     const orderClass = Array.from(col.classList).find(c =>
-      /^order-d+$/.test(c)
+      /^order-\d+$/.test(c)
     );
 
     if (orderClass) {
