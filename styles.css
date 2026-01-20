@@ -1,0 +1,60 @@
+.splide {
+    --container-width: 100%;
+    --container-padding: 0.75rem;
+}
+.splide__track {
+    touch-action: pan-y !important; /* Allows vertical page scroll, but intercepts horizontal swipes */
+    -webkit-user-select: none;      /* Prevents text highlighting while swiping */
+    user-select: none;
+}
+
+
+/* Bootstrap */
+@media (min-width:576px) {
+    .splide[data-bootstrap-full-width="true"] {
+        --container-width: 516px;
+        --container-negative-width: calc(100% - var(--container-width));
+        --container-padding: calc(var(--container-negative-width) / 2);
+    }
+}
+@media (min-width:768px) {
+    .splide[data-bootstrap-full-width="true"] {
+        --container-width: 696px;
+    }
+}
+@media (min-width:992px) {
+    .splide[data-bootstrap-full-width="true"] {
+        --container-width: 936px;
+    }
+}
+@media (min-width:1200px) {
+    .splide[data-bootstrap-full-width="true"] {
+        --container-width: 1116px;
+    }
+}
+@media (min-width:1400px) {
+    .splide[data-bootstrap-full-width="true"] {
+        --container-width: 1296px;
+    }
+}
+
+/* Buttons */
+.splideButtons {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 1rem;
+}
+.splideButtons button {
+    background: none;
+    border: none;
+    padding: 0;
+}
+.splide:not(.is-overflow) .splideButtons {
+  display: none;
+}
+
+/* Fix order bug */
+.scrollCol {
+    order: 99;
+}
