@@ -110,32 +110,33 @@ const mountSplideEls = function() {
           padding: padding(itemsXs),
           mediaQuery: 'min',
           gap: gapXs,
-          perPage: Math.floor(itemsXs),
+          // perPage: Math.floor(itemsXs),
+          autoWidth: true,
           breakpoints: {
             576: { 
-              perPage: Math.floor(itemsSm),
+              // perPage: Math.floor(itemsSm),
               gap: gapSm,
-              padding: padding(itemsSm)
+              // padding: padding(itemsSm)
             },
             768: { 
-              perPage: Math.floor(itemsMd),
+              //perPage: Math.floor(itemsMd),
               gap: gapMd,
-              padding: padding(itemsMd)
+              //padding: padding(itemsMd)
             },
             992: { 
-              perPage: Math.floor(itemsLg),
+              //perPage: Math.floor(itemsLg),
               gap: gapLg,
-              padding: padding(itemsLg)
+              //padding: padding(itemsLg)
             },
             1200: { 
-              perPage: Math.floor(itemsXl),
+              //perPage: Math.floor(itemsXl),
               gap: gapXl,
-              padding: padding(itemsXl)
+              //padding: padding(itemsXl)
             },
             1400: { 
-              perPage: Math.floor(itemsXxl),
+              //perPage: Math.floor(itemsXxl),
               gap: gapXxl,
-              padding: padding(itemsXxl)
+              //padding: padding(itemsXxl)
             }
           }
         }).mount();
