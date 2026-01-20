@@ -107,7 +107,10 @@ const mountSplideEls = function() {
           flickPower: 800,  
           arrows: false,
           pagination: false,
-          padding: padding(itemsXs),
+          padding: { 
+              left: 'var(--container-padding)', 
+              right: 'var(--container-padding)'
+            },
           mediaQuery: 'min',
           gap: gapXs,
           // perPage: Math.floor(itemsXs),
