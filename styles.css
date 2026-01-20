@@ -9,7 +9,25 @@
 }
 
 
-/* Bootstrap */
+
+
+/* Item widths */
+
+.splide__list {
+    --gaps-width: calc(var(--gap) * (var(--items) - 1));
+    --items-total-width: calc( 100% - var(--gaps-width) );
+    --item-width: calc( var(--items-total-width) / var(--items));
+    --items: var(--items-xs);
+}
+
+.splide__slide {
+    width: var(--item-width);
+}
+
+
+
+
+/* Responsive */
 @media (min-width:576px) {
     .splide[data-bootstrap-full-width="true"] {
         --container-width: 516px;
@@ -18,6 +36,9 @@
     }
 }
 @media (min-width:768px) {
+    .splide__list {
+        --items: var(--items-md);
+    }
     .splide[data-bootstrap-full-width="true"] {
         --container-width: 696px;
     }
@@ -28,6 +49,9 @@
     }
 }
 @media (min-width:1200px) {
+    .splide__list {
+        --items: var(--items-lg);
+    }
     .splide[data-bootstrap-full-width="true"] {
         --container-width: 1116px;
     }
@@ -37,6 +61,8 @@
         --container-width: 1296px;
     }
 }
+
+
 
 /* Buttons */
 .splideButtons {
