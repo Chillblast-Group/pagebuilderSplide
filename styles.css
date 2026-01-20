@@ -29,6 +29,9 @@
 
 /* Responsive */
 @media (min-width:576px) {
+    .splide__list {
+        --items: var(--items-sm);
+    }
     .splide[data-bootstrap-full-width="true"] {
         --container-width: 516px;
         --container-negative-width: calc(100% - var(--container-width));
@@ -44,6 +47,9 @@
     }
 }
 @media (min-width:992px) {
+    .splide__list {
+        --items: var(--items-lg);
+    }
     .splide[data-bootstrap-full-width="true"] {
         --container-width: 936px;
     }
@@ -57,6 +63,9 @@
     }
 }
 @media (min-width:1400px) {
+    .splide__list {
+        --items: var(--items-xxl);
+    }
     .splide[data-bootstrap-full-width="true"] {
         --container-width: 1296px;
     }
