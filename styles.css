@@ -50,7 +50,7 @@
 }
 @media (min-width:1200px) {
     .splide__list {
-        --items: var(--items-lg);
+        --items: var(--items-xl);
     }
     .splide[data-bootstrap-full-width="true"] {
         --container-width: 1116px;
