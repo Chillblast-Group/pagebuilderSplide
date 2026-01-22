@@ -61,8 +61,10 @@ const mountSplideEls = function() {
       sliderGroups.forEach(splideElement => {
           
         splideElement.dataset.splideStatus = "done"
-        
-        restructureColumns(splideElement, '.splide__list');
+
+        if (splideElement.dataset && splideElement.dataset.restructureColumns) {
+          restructureColumns(splideElement, '.splide__list');
+        }
         
         // 2. Find the specific buttons within THIS group
         const btnNext = splideElement.querySelector('button[data-splide-go="next"]');
