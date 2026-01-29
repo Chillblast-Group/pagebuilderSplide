@@ -1,6 +1,6 @@
 .splide {
     --container-width: 100%;
-    --container-padding: 0.75rem;
+    --default-padding: 0.75rem;
     --gap: 1rem;
     --items-xs: 1;
     --items-sm: var(--items-xs);
@@ -14,7 +14,8 @@
     --padding-full: 100% - var(--container-width-full);
     --padding-content: CALC(var(--container-width-full) - var(--container-width-content));
     --padding-total: CALC(var(--padding-full) + var(--padding-content));
-    --container-padding: CALC(var(--padding-total) / 2);
+    --padding-half: CALC(var(--padding-total) / 2);
+    --container-padding: MAX(var(--padding-half), var(--default-padding));
 }
 .splide__track {
     touch-action: pan-y !important; /* Allows vertical page scroll, but intercepts horizontal swipes */
@@ -49,6 +50,7 @@
         --items: var(--items-sm);
         --container-width-content: 516px;
         --container-width-full: 540px;
+        --default-padding: 0.75rem;
     }
 }
 @media (min-width:768px) {
@@ -56,6 +58,7 @@
         --items: var(--items-md);
         --container-width: 696px;
         --container-width-full: 720px;
+        --default-padding: 0.75rem;
     }
 }
 @media (min-width:992px) {
@@ -63,6 +66,7 @@
         --items: var(--items-lg);
         --container-width: 936px;
         --container-width-full: 960px;
+        --default-padding: 0.75rem;
     }
 }
 @media (min-width:1200px) {
