@@ -46,7 +46,7 @@
 
 /* Responsive */
 @media (min-width:576px) {
-    .splide__list {
+    .splide {
         --items: var(--items-sm);
         --container-width-content: 516px;
         --container-width-full: 540px;
@@ -54,32 +54,32 @@
     }
 }
 @media (min-width:768px) {
-    .splide__list {
+    .splide {
         --items: var(--items-md);
-        --container-width: 696px;
+        --container-width-content: 696px;
         --container-width-full: 720px;
         --default-padding: 0.75rem;
     }
 }
 @media (min-width:992px) {
-    .splide__list {
+    .splide {
         --items: var(--items-lg);
-        --container-width: 936px;
+        --container-width-content: 936px;
         --container-width-full: 960px;
         --default-padding: 0.75rem;
     }
 }
 @media (min-width:1200px) {
-    .splide__list {
+    .splide {
         --items: var(--items-xl);
-        --container-width: 1116px;
+        --container-width-content: 1116px;
         --container-width-full: 1140px;
     }
 }
 @media (min-width:1400px) {
     .splide__list {
         --items: var(--items-xxl);
-        --container-width: 1296px;
+        --container-width-content: 1296px;
         --container-width-full: 1320px;
     }
 }
