@@ -32,7 +32,6 @@
     --gaps-width: calc(var(--gap) * (var(--items) - 1));
     --items-total-width: calc( 100% - var(--gaps-width) );
     --item-width: calc( var(--items-total-width) / var(--items));
-    --items: var(--items-xs);
 }
 
 .splide__slide {
