@@ -77,7 +77,7 @@
     }
 }
 @media (min-width:1400px) {
-    .splide__list {
+    .splide {
         --items: var(--items-xxl);
         --container-width-content: 1296px;
         --container-width-full: 1320px;
