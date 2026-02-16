@@ -8,8 +8,8 @@
     --items-lg: var(--items-md);
     --items-xl: var(--items-lg);
     --items-xxl: var(--items-xl);
-    --container-width-full: 1320px;
-    --container-width-content: 1296px;
+    --container-width-content: calc(100% - 1.5rem);
+    --container-width-full: 100%;
     --container-width: MIN(100%, var(--container-width-content));
     --padding-full: 100% - var(--container-width-full);
     --padding-content: CALC(var(--container-width-full) - var(--container-width-content));
@@ -44,6 +44,12 @@
 
 
 /* Responsive */
+.splide {
+    --items: var(--items-xs);
+    --container-width-content: calc(100% - 1.5rem);
+    --container-width-full: 100%;
+    --default-padding: 0.75rem;
+}
 @media (min-width:576px) {
     .splide {
         --items: var(--items-sm);
