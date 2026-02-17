@@ -106,7 +106,7 @@ const mountSplideEls = function() {
         const splide = new Splide(splideElement, {
           drag: 'free',               // <— this is the big one
           snap: true,                 // keeps it snapping to the nearest slide after you let go
-          flickPower: 800,  
+          flickPower: 500,  
           arrows: false,
           pagination: false,
           padding: { 
