@@ -114,3 +114,11 @@
 .scrollCol {
     order: 99;
 }
+
+
+
+/* CCL specific */
+
+#pdpTabContent .splide {
+    --default-padding: 1.5rem;
+}
