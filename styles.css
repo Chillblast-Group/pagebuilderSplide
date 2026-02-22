@@ -117,6 +117,20 @@
 
 
 
+/* Auto width items */
+.splide[data-splide-items="auto"] .splide__list {
+    --gaps-width: 0;
+    --items-total-width: 100%;
+    --item-width: auto;
+}
+
+.splide[data-splide-items="auto"] .splide__slide {
+    width: auto;
+    flex-shrink: 0;
+}
+
+
+
 /* CCL specific */
 
 #pdpTabContent .splide {
