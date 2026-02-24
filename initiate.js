@@ -15,7 +15,7 @@ const restructureColumns = function(containerEl, containerSelector, itemSelector
 
   colEls.forEach(col => {
     // Drop hidden slides completely
-    if (col.classList.contains('d-none')) {
+    if (col.classList.contains('d-none') || col.dataset.display = 'hide') {
       col.remove();
       return;
     }
