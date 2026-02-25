@@ -104,9 +104,9 @@ const mountSplideEls = function() {
     
         // 3. Initialize this specific Splide instance
         const splide = new Splide(splideElement, {
-          drag: 'free',               // <— this is the big one
+          drag: 'isOverflow',               // <— this is the big one
           snap: true,                 // keeps it snapping to the nearest slide after you let go
-          flickPower: 500,  
+          flickPower: 400,  
           arrows: false,
           pagination: false,
           padding: { 
