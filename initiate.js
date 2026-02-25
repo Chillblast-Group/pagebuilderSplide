@@ -145,6 +145,8 @@ const mountSplideEls = function() {
             }
           }
         }).mount();
+        splideElement._splide = splide;
+        requestAnimationFrame(() => splide.refresh());
         
         
         
