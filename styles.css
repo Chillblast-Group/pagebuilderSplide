@@ -1,138 +1,79 @@
-.splide {
-    --container-width: 100%;
-    --default-padding: 0.75rem;
-    --gap: 1rem;
-    --items-xs: 1;
-    --items-sm: var(--items-xs);
-    --items-md: var(--items-sm);
-    --items-lg: var(--items-md);
-    --items-xl: var(--items-lg);
-    --items-xxl: var(--items-xl);
-    --container-width-content: calc(100% - 1.5rem);
-    --container-width-full: 100%;
-    --container-width: MIN(100%, var(--container-width-content));
-    --padding-full: 100% - var(--container-width-full);
-    --padding-content: CALC(var(--container-width-full) - var(--container-width-content));
-    --padding-total: CALC(var(--padding-full) + var(--padding-content));
-    --padding-half: CALC(var(--padding-total) / 2);
-    --container-padding: MAX(var(--padding-half), var(--default-padding));
+/* ─────────────────────────────────────────────
+   Splide utility — Bootstrap 5 container sync
+   ───────────────────────────────────────────── */
+
+/* Full-bleed mode (default): padding aligns the track edge with a Bootstrap
+   .container. --container-width-content is overridden per breakpoint below.
+   All rules target [data-slider], not .splide, to stay isolated from the library. */
+[data-slider] {
+  --default-padding: 0.75rem;
+  --container-width-content: calc(100% - 1.5rem);
+  --container-padding: max(
+    calc((100% - var(--container-width-content)) / 2),
+    var(--default-padding)
+  );
 }
+
 .splide__track {
-    touch-action: pan-y !important; /* Allows vertical page scroll, but intercepts horizontal swipes */
-    -webkit-user-select: none;      /* Prevents text highlighting while swiping */
-    user-select: none;
+  touch-action: pan-y !important;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* Mirror Bootstrap container breakpoints */
+@media (min-width: 576px)  { [data-slider] { --container-width-content: 516px;  } }
+@media (min-width: 768px)  { [data-slider] { --container-width-content: 696px;  } }
+@media (min-width: 992px)  { [data-slider] { --container-width-content: 936px;  } }
+@media (min-width: 1200px) { [data-slider] { --container-width-content: 1116px; } }
+@media (min-width: 1400px) { [data-slider] { --container-width-content: 1296px; } }
+
+
+/* ── Modes ─────────────────────────────────── */
+
+/* Contained: slider sits inside a Bootstrap .container.
+   Defaults to --default-padding (0.75rem) matching Bootstrap's gutter.
+   Override --container-padding on your element to adjust. */
+[data-slider][data-mode="contained"] {
+  --container-padding: var(--default-padding);
+}
+
+/* Auto: item widths are set by content (e.g. filter chips).
+   data-splide-items="auto" kept for backwards compatibility. */
+[data-slider][data-items="auto"] .splide__slide,
+[data-slider][data-splide-items="auto"] .splide__slide {
+  width: auto;
+  flex-shrink: 0;
+}
+
+/* Center items when the slider doesn't overflow */
+[data-slider][data-center-when-fit]:not(.is-overflow) .splide__list {
+  justify-content: center;
+  width: auto !important;
+  transform: none !important;
 }
 
 
+/* ── Navigation buttons ─────────────────────── */
 
-
-/* Item widths */
-
-.splide__list {
-    --gaps-width: calc(var(--gap) * (var(--items) - 1));
-    --items-total-width: calc( 100% - var(--gaps-width) );
-    --item-width: calc( var(--items-total-width) / var(--items));
-}
-
-.splide__slide {
-    width: var(--item-width);
-}
-
-
-
-
-
-
-/* Responsive */
-.splide {
-    --items: var(--items-xs);
-    --container-width-content: calc(100% - 1.5rem);
-    --container-width-full: 100%;
-    --default-padding: 0.75rem;
-}
-@media (min-width:576px) {
-    .splide {
-        --items: var(--items-sm);
-        --container-width-content: 516px;
-        --container-width-full: 540px;
-        --default-padding: 0.75rem;
-    }
-}
-@media (min-width:768px) {
-    .splide {
-        --items: var(--items-md);
-        --container-width-content: 696px;
-        --container-width-full: 720px;
-        --default-padding: 0.75rem;
-    }
-}
-@media (min-width:992px) {
-    .splide {
-        --items: var(--items-lg);
-        --container-width-content: 936px;
-        --container-width-full: 960px;
-        --default-padding: 0.75rem;
-    }
-}
-@media (min-width:1200px) {
-    .splide {
-        --items: var(--items-xl);
-        --container-width-content: 1116px;
-        --container-width-full: 1140px;
-    }
-}
-@media (min-width:1400px) {
-    .splide {
-        --items: var(--items-xxl);
-        --container-width-content: 1296px;
-        --container-width-full: 1320px;
-    }
-}
-
-
-
-
-
-
-/* Buttons */
 .splideButtons {
-    display: flex;
-    justify-content: end;
-    align-items: center;
-    gap: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1rem;
 }
+
 .splideButtons button {
-    background: none;
-    border: none;
-    padding: 0;
+  background: none;
+  border: none;
+  padding: 0;
 }
-.splide:not(.is-overflow) .splideButtons {
+
+/* Buttons placed after the track (below slides) — align to container edge */
+[data-slider] > .splideButtons {
+  padding: 0.75rem var(--container-padding) 0;
+}
+
+/* Hide buttons when all slides are visible */
+[data-slider]:not(.is-overflow) .splideButtons {
   display: none;
-}
-
-/* Fix order bug */
-.scrollCol {
-    order: 99;
-}
-
-
-
-/* Auto width items */
-.splide[data-splide-items="auto"] .splide__list {
-    --gaps-width: 0;
-    --items-total-width: 100%;
-    --item-width: auto;
-}
-
-.splide[data-splide-items="auto"] .splide__slide {
-    width: auto;
-    flex-shrink: 0;
-}
-
-
-
-/* CCL specific */
-
-#pdpTabContent .splide {
-    --default-padding: 1.5rem;
 }
