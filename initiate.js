@@ -69,7 +69,7 @@ const mountSplideEls = function() {
         padding: {
           left: 'var(--container-padding)',
           right: !isAuto && n % 1 > 0
-            ? `calc(var(--container-padding) + ${Math.round((n % 1) * 100)}%)`
+            ? `calc(var(--container-padding) + ${+((n % 1) / n * 100).toFixed(4)}%)`
             : 'var(--container-padding)',
         },
       };
