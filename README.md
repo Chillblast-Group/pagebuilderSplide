@@ -4,14 +4,14 @@ A thin wrapper around [Splide JS](https://splidejs.com/) that aligns sliders wit
 
 ## Dependencies
 
+Add these alongside your existing Bootstrap includes:
+
 ```html
-<!-- Bootstrap 5 CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-<!-- Splide core CSS -->
+<!-- Splide core CSS (in <head>) -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide-core.min.css">
-<!-- This utility -->
 <link rel="stylesheet" href="splide.css">
-...
+
+<!-- Splide JS + this utility (before </body>) -->
 <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
 <script src="splide.js"></script>
 ```
