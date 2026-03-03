@@ -1,6 +1,4 @@
-const restructureColumns = function(containerEl, containerSelector, itemSelector) {
-  itemSelector = itemSelector || '.splide__slide';
-
+const restructureColumns = (containerEl, containerSelector, itemSelector = '.splide__slide') => {
   if (!containerEl.matches(containerSelector)) {
     containerEl = containerEl.querySelector(containerSelector);
   }
@@ -29,20 +27,12 @@ const restructureColumns = function(containerEl, containerSelector, itemSelector
 };
 
 
-const mountSplideEls = function() {
-  const sliders = document.querySelectorAll('[data-slider="initial"]');
-  if (!sliders.length) return;
-
-  sliders.forEach(el => {
+const mountSplideEls = () => {
+  document.querySelectorAll('[data-slider="initial"]').forEach(el => {
     el.dataset.slider = 'ready';
 
-    if (el.dataset.restructureColumns == "true") restructureColumns(el, '.splide__list');
+    if (el.dataset.restructureColumns === 'true') restructureColumns(el, '.splide__list');
 
-    const btnNext = el.querySelector('button[data-splide-go="next"]');
-    const btnPrev = el.querySelector('button[data-splide-go="prev"]');
-
-    // Layout is handled by CSS --container-padding.
-    // data-items="auto" enables flexible-width items (e.g. filter chips).
     const isAuto = el.dataset.items === 'auto' || el.dataset.splideItems === 'auto';
 
     // Build per-breakpoint items & gap with cascade fallback.
@@ -61,7 +51,7 @@ const mountSplideEls = function() {
       gaps[bp]  = curGap;
     }
 
-    const buildBp = (bp) => {
+    const buildBp = bp => {
       const n = items[bp];
       return {
         gap: gaps[bp],
@@ -69,7 +59,7 @@ const mountSplideEls = function() {
         padding: {
           left: 'var(--container-padding)',
           right: !isAuto && n % 1 > 0
-            ? `calc(var(--container-padding) + ${+((n % 1) / n * 100).toFixed(4)}%)`
+            ? `calc(var(--container-padding) + ${Math.round((n % 1) * 100)}%)`
             : 'var(--container-padding)',
         },
       };
@@ -94,19 +84,20 @@ const mountSplideEls = function() {
     }).mount();
 
     el._splide = splide;
-
     requestAnimationFrame(() => splide.refresh());
 
-    if (btnNext) btnNext.addEventListener('click', () => splide.go('+1'));
-    if (btnPrev) btnPrev.addEventListener('click', () => splide.go('-1'));
-
-    const updateButtons = () => {
-      if (btnPrev) btnPrev.disabled = splide.index === 0;
-      if (btnNext) btnNext.disabled = splide.index === splide.Components.Controller.getEnd();
-    };
-    updateButtons();
-    splide.on('moved', updateButtons);
-    splide.on('scrolled', updateButtons);
+    // Splide handles data-splide-go clicks natively.
+    // Sync disabled state on custom nav buttons after each move.
+    const btnPrev = el.querySelector('[data-splide-go="prev"]');
+    const btnNext = el.querySelector('[data-splide-go="next"]');
+    if (btnPrev || btnNext) {
+      const sync = () => {
+        if (btnPrev) btnPrev.disabled = splide.index === 0;
+        if (btnNext) btnNext.disabled = splide.index === splide.Components.Controller.getEnd();
+      };
+      sync();
+      splide.on('moved', sync);
+    }
   });
 };
 
