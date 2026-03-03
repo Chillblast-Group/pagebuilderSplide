@@ -84,7 +84,7 @@ const mountSplideEls = () => {
     }).mount();
 
     el._splide = splide;
-    requestAnimationFrame(() => splide.refresh());
+    // requestAnimationFrame(() => splide.refresh());
 
     // Splide handles data-splide-go clicks natively.
     // Sync disabled state on custom nav buttons after each move.
