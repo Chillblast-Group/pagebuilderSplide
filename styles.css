@@ -1,90 +1,102 @@
-/* ─────────────────────────────────────────────
-   Splide utility — Bootstrap 5 container sync
-   ───────────────────────────────────────────── */
+.splide {
+  --default-padding: 1rem;
 
-/* Full-bleed mode (default): padding aligns the track edge with a Bootstrap
-   .container. --container-width-content is overridden per breakpoint below.
-   All rules target [data-slider], not .splide, to stay isolated from the library. */
-[data-slider] {
-  --default-padding: 0.75rem;
-  --container-width-content: calc(100% - 1.5rem);
-  --container-padding: max(
-    calc((100% - var(--container-width-content)) / 2),
-    var(--default-padding)
-  );
+  /* Calculate track width */
+  --track-width-full: 100%;
+  --track-width-contained: calc(100% - var(--default-padding) * 2);
+  --track-width: min(var(--track-width-full), var(--track-width-contained));
+  --padding-width: calc((100% - var(--track-width)) / 2);
+
+  /* Calculate slide width */
+  --items-rounded: round(up, var(--items));
+  --gaps: calc(var(--items-rounded) - 1);
+  --gaps-width-total: calc((var(--gaps) * var(--gap)));
+
 }
 
-.splide__track {
-  touch-action: pan-y;
-  -webkit-user-select: none;
-  user-select: none;
+/* Responsive adjustments */
+.splide {
+  --track-width-full: calc(100% + var(--default-padding) * 2);
+  --items: var(--items-xs);
+  --gap: var(--gap-xs);
+}
+@media (min-width: 576px) {
+  .splide {
+    --track-width-full: 516px;
+    --items: var(--items-sm);
+    --gap: var(--gap-sm);
+  }
+}
+@media (min-width: 768px) {
+  .splide {
+    --track-width-full: 696px;
+    --items: var(--items-md);
+    --gap: var(--gap-md);
+  }
+}
+@media (min-width: 992px) {
+  .splide {
+    --track-width-full: 936px;
+    --items: var(--items-lg);
+    --gap: var(--gap-lg);
+  }
+}
+@media (min-width: 1200px) {
+  .splide {
+    --track-width-full: 1116px;
+    --items: var(--items-xl);
+    --gap: var(--gap-xl);
+  }
+}
+@media (min-width: 1400px) {
+  .splide {
+    --track-width-full: 1296px;
+    --items: var(--items-xxl);
+    --gap: var(--gap-xxl);
+  }
 }
 
+/* Safari performance fixes */
 .splide__list {
   will-change: transform;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 
-/* Mirror Bootstrap container breakpoints */
-@media (min-width: 576px)  { [data-slider] { --container-width-content: 516px;  } }
-@media (min-width: 768px)  { [data-slider] { --container-width-content: 696px;  } }
-@media (min-width: 992px)  { [data-slider] { --container-width-content: 936px;  } }
-@media (min-width: 1200px) { [data-slider] { --container-width-content: 1116px; } }
-@media (min-width: 1400px) { [data-slider] { --container-width-content: 1296px; } }
-
-
-/* ── Modes ─────────────────────────────────── */
-
-/* Contained: slider sits inside a Bootstrap .container.
-   Defaults to --default-padding (0.75rem) matching Bootstrap's gutter.
-   Override --container-padding on your element to adjust. */
-[data-slider][data-mode="contained"] {
-  --container-padding: var(--default-padding);
+/* Slide width calculation */
+.splide__slide {
+  width: calc((100% - var(--gaps-width-total)) / var(--items));
 }
 
-/* Auto: item widths are set by content (e.g. filter chips).
-   data-splide-items="auto" kept for backwards compatibility. */
-[data-slider][data-items="auto"] .splide__slide,
-[data-slider][data-splide-items="auto"] .splide__slide {
+.splide[data-items="auto"] .splide__slide {
   width: auto;
-  flex-shrink: 0;
-}
-
-/* Center items when the slider doesn't overflow */
-[data-slider][data-center-when-fit]:not(.is-overflow) .splide__list {
-  justify-content: center;
-  width: auto !important;
-  transform: none !important;
 }
 
 
-/* ── Navigation buttons ─────────────────────── */
+/* Centre when fit */
+.splide[data-center-when-fit="true"]:not(.is-overflow) .splide__list {
+    justify-content: center;
+}
+
+
+
+/* Buttons */
 
 .splideButtons {
+  padding: 0 var(--padding-width);
   display: flex;
+  gap: 0.5rem;
   align-items: center;
   justify-content: flex-end;
-  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.splide:not(.is-overflow) .splideButtons {
+  display: none;
 }
 
 .splideButtons button {
   background: none;
   border: none;
   padding: 0;
-}
-
-/* Buttons placed after the track (below slides) — align to container edge */
-[data-slider] > .splideButtons {
-  padding: 0.75rem var(--container-padding) 0;
-}
-
-/* Hide buttons when all slides are visible */
-[data-slider]:not(.is-overflow) .splideButtons {
-  display: none;
-}
-
-
-/* ── Bootstrap column order fix ─────────────── */
-
-.scrollCol {
-  order: 99;
 }
