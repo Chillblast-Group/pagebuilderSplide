@@ -89,11 +89,12 @@
     splideEl.dataset.sliderStatus = 'mounted';
     splideInstances.push(splide);
 
-    // Splide handles data-splide-go clicks natively.
-    // Sync disabled state on custom nav buttons after each move.
+    // Wire up custom nav buttons and sync their disabled state.
     const btnPrev = splideEl.querySelector('[data-splide-go="prev"]');
     const btnNext = splideEl.querySelector('[data-splide-go="next"]');
     if (btnPrev || btnNext) {
+      if (btnPrev) btnPrev.addEventListener('click', () => splide.go('<'));
+      if (btnNext) btnNext.addEventListener('click', () => splide.go('>'));
       const sync = () => {
         if (btnPrev) btnPrev.disabled = splide.index === 0;
         if (btnNext) btnNext.disabled = splide.index === splide.Components.Controller.getEnd();
