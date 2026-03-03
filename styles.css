@@ -15,9 +15,13 @@
 }
 
 .splide__track {
-  touch-action: pan-y !important;
+  touch-action: pan-y;
   -webkit-user-select: none;
   user-select: none;
+}
+
+.splide__list {
+  will-change: transform;
 }
 
 /* Mirror Bootstrap container breakpoints */
@@ -76,4 +80,11 @@
 /* Hide buttons when all slides are visible */
 [data-slider]:not(.is-overflow) .splideButtons {
   display: none;
+}
+
+
+/* ── Bootstrap column order fix ─────────────── */
+
+.scrollCol {
+  order: 99;
 }
