@@ -29,11 +29,6 @@
     ordered.sort((a, b) => a.order - b.order);
     [...ordered.map(o => o.el), ...unordered].forEach(e => containerEl.appendChild(e));
   };
-
-  var splideEls = document.querySelectorAll('[data-slider="ready"]');
-  if (!splideEls.length) return;
-
-  let splideInstances = [];
     
   window._mountSplideEl = function(splideEl) {
 
