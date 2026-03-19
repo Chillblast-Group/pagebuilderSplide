@@ -79,7 +79,7 @@
           right: 'var(--padding-width)'
         },
       mediaQuery: 'min',
-      gap: 'var(--gap)', // Pass gap to Splide so it can include it in its position calculations
+      gap: 0, // Pass gap to Splide so it can include it in its position calculations
       autoWidth: true
     }
 
