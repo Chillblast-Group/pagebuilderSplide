@@ -101,3 +101,11 @@
   border: none;
   padding: 0;
 }
+
+
+
+/* Gap fix */
+
+.splide__slide {
+  margin-right: 0 !important;
+}
