@@ -35,7 +35,7 @@
 
   let splideInstances = [];
     
-  var mountSplideEl = function(splideEl) {
+  window._mountSplideEl = function(splideEl) {
 
     if (splideEl.dataset.restructureColumns === 'true') restructureColumns(splideEl, '.splide__list');
 
@@ -107,7 +107,7 @@
 
   // ── Boot ───────────────────────────────────────────────────────────────────
   function init() {
-    document.querySelectorAll('[data-slider="ready"]').forEach(mountSplideEl);
+    document.querySelectorAll('[data-slider="ready"]').forEach(window._mountSplideEl);
   }
 
   if (document.readyState === 'loading') {
