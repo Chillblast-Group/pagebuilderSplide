@@ -61,6 +61,7 @@
   will-change: transform;
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
+  gap: var(--gap);
 }
 
 /* Slide width calculation */
