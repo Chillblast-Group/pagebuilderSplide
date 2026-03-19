@@ -29,7 +29,8 @@
     ordered.sort((a, b) => a.order - b.order);
     [...ordered.map(o => o.el), ...unordered].forEach(e => containerEl.appendChild(e));
   };
-    
+
+  window._splideInstances = []
   window._mountSplideEl = function(splideEl) {
 
     if (splideEl.dataset.restructureColumns === 'true') restructureColumns(splideEl, '.splide__list');
@@ -82,7 +83,7 @@
     const splide = new Splide(splideEl, options).mount();
     splideEl.splideInstance = splide; // Store instance on element for later reference
     splideEl.dataset.sliderStatus = 'mounted';
-    splideInstances.push(splide);
+    window._splideInstances.push(splide);
 
     // Wire up custom nav buttons and sync their disabled state.
     const btnPrev = splideEl.querySelector('[data-splide-go="prev"]');
