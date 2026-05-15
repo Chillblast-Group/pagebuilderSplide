@@ -54,6 +54,24 @@
     --items: var(--items-xxl);
     --gap: var(--gap-xxl);
   }
+  .splide[data-max-width="1600"] {
+    --track-width-full: 1600px;
+  }
+}
+@media (min-width: 2000px) {
+  .splide[data-max-width="2000"],
+  .splide[data-max-width="3200"]
+  {
+    --items: var(--items-xxxl);
+    --gap: var(--gap-xxxl);
+  }
+}
+@media (min-width: 2600px) {
+  .splide[data-max-width="3200"] {
+    --track-width-full: 3200px;
+    --items: var(--items-xxxxl);
+    --gap: var(--gap-xxxxl);
+  }
 }
 
 /* Safari performance fixes */
