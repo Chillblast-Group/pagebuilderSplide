@@ -42,14 +42,16 @@
     const itemsLg = splideEl.dataset.itemsLg || itemsMd;
     const itemsXl = splideEl.dataset.itemsXl || itemsLg;
     const itemsXxl = splideEl.dataset.itemsXxl || itemsXl;
+    const itemsXxxl = splideEl.dataset.itemsXxl || itemsXxl;
+    const itemsXxxxl = splideEl.dataset.itemsXxl || itemsXxxl;
     splideEl.style.setProperty('--items-xs', itemsXs);
     splideEl.style.setProperty('--items-sm', itemsSm);
     splideEl.style.setProperty('--items-md', itemsMd);
     splideEl.style.setProperty('--items-lg', itemsLg);
     splideEl.style.setProperty('--items-xl', itemsXl);
     splideEl.style.setProperty('--items-xxl', itemsXxl);
-    splideEl.style.setProperty('--items-xxl', itemsXxxl);
-    splideEl.style.setProperty('--items-xxl', itemsXxxxl);
+    splideEl.style.setProperty('--items-xxxl', itemsXxxl);
+    splideEl.style.setProperty('--items-xxxxl', itemsXxxxl);
 
     /* Gap */
     const gapXs = splideEl.dataset.gap || '1rem';
@@ -58,6 +60,8 @@
     const gapLg = splideEl.dataset.gapLg || gapMd;
     const gapXl = splideEl.dataset.gapXl || gapLg;
     const gapXxl = splideEl.dataset.gapXxl || gapXl;
+    const gapXxxl = splideEl.dataset.gapXxl || gapXxl;
+    const gapXxxxl = splideEl.dataset.gapXxl || gapXxxl;
     splideEl.style.setProperty('--gap-xs', gapXs);
     splideEl.style.setProperty('--gap-sm', gapSm);
     splideEl.style.setProperty('--gap-md', gapMd);
