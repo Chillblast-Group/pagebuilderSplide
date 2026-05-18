@@ -68,8 +68,8 @@
     splideEl.style.setProperty('--gap-lg', gapLg);
     splideEl.style.setProperty('--gap-xl', gapXl);
     splideEl.style.setProperty('--gap-xxl', gapXxl);
-    splideEl.style.setProperty('--gap-xxl', gapXxxl);
-    splideEl.style.setProperty('--gap-xxl', gapXxxxl);
+    splideEl.style.setProperty('--gap-xxxl', gapXxxl);
+    splideEl.style.setProperty('--gap-xxxxl', gapXxxxl);
 
     // Options
     const options = {
