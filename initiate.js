@@ -30,12 +30,13 @@
     [...ordered.map(o => o.el), ...unordered].forEach(e => containerEl.appendChild(e));
   };
 
-  window._splideInstances = []
-  window._mountSplideEl = function(splideEl) {
+  window._setSplideCssRules = function(splideEl) {
 
-    if (splideEl.dataset.restructureColumns === 'true') restructureColumns(splideEl, '.splide__list');
+    if(!splideEl) {
+      return false;
+    }
 
-    /* Items */
+     /* Items */
     const itemsXs = splideEl.dataset.items || 1;
     const itemsSm = splideEl.dataset.itemsSm || itemsXs;
     const itemsMd = splideEl.dataset.itemsMd || itemsSm;
@@ -70,6 +71,17 @@
     splideEl.style.setProperty('--gap-xxl', gapXxl);
     splideEl.style.setProperty('--gap-xxxl', gapXxxl);
     splideEl.style.setProperty('--gap-xxxxl', gapXxxxl);
+
+  }
+
+
+  window._splideInstances = []
+  window._mountSplideEl = function(splideEl) {
+
+    if (splideEl.dataset.restructureColumns === 'true') restructureColumns(splideEl, '.splide__list');
+
+    /* Items */
+    window._setSplideCssRules(splideEl);
 
     // Options
     const options = {
@@ -107,6 +119,15 @@
       splide.on('moved', sync);
     }
 
+  };
+
+  window._refreshSplideEl = function(splideEl) {
+    if (!splideEl.splideInstance) {
+      window._mountSplideEl(splideEl);
+      return;
+    }
+    splideEl.splideInstance.refresh();
+    window._setSplideCssRules(splideEl);
   };
 
   // ── Boot ───────────────────────────────────────────────────────────────────
